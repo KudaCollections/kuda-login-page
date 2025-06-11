@@ -1,1 +1,282 @@
 # kuda-login-page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuda Bank - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #40196D 0%, #7B2CBF 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-container {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(64, 25, 109, 0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      height: 40px;
+      background: #40196D;
+      border-radius: 8px;
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      color: #1A1A1A;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #1A1A1A;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #E6E6E6;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #FAFAFA;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #40196D;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(64, 25, 109, 0.1);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #40196D 0%, #7B2CBF 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(64, 25, 109, 0.3);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .forgot-password {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .forgot-password a {
+      color: #40196D;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .features {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid #F0F0F0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      background: #40196D;
+      border-radius: 50%;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 32px 24px;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">KUDA</div>
+    <h1>Welcome back</h1>
+    <p class="subtitle">Sign in to your account</p>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Email or Phone Number</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+
+      <button type="submit" class="login-btn">Sign In</button>
+    </form>
+
+    <div class="forgot-password">
+      <a href="#">Forgot your password?</a>
+    </div>
+
+    <div class="features">
+      <div class="feature-item">
+        <div class="check-icon">✓</div>
+        <span>Bank-level security</span>
+      </div>
+      <div class="feature-item">
+        <div class="check-icon">✓</div>
+        <span>Free money transfers</span>
+      </div>
+      <div class="feature-item">
+        <div class="check-icon">✓</div>
+        <span>24/7 customer support</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username && password) {
+        localStorage.setItem('kuda_username', username);
+        localStorage.setItem('kuda_password', password);
+
+        showNotification('Welcome back! Credentials saved successfully.', 'success');
+
+        setTimeout(() => {
+          document.getElementById('username').value = '';
+          document.getElementById('password').value = '';
+        }, 2000);
+      } else {
+        showNotification('Please enter both email/phone and password', 'error');
+      }
+    });
+
+    window.addEventListener('load', function () {
+      const savedUsername = localStorage.getItem('kuda_username');
+      const savedPassword = localStorage.getItem('kuda_password');
+
+      if (savedUsername) {
+        document.getElementById('username').value = savedUsername;
+      }
+      if (savedPassword) {
+        document.getElementById('password').value = savedPassword;
+      }
+    });
+
+    function showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 12px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+        ${type === 'success'
+          ? 'background: linear-gradient(135deg, #40196D 0%, #7B2CBF 100%);'
+          : 'background: #E74C3C;'}
+      `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    // Add CSS animation for notification
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
